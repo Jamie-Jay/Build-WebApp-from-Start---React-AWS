@@ -28,3 +28,7 @@
 `https://4hxufq3wde.execute-api.us-east-1.amazonaws.com/dev/users/some`  
 then get response `{"userId":"some","name":"John"}`
 8. modify the handler.js
+
+#### PS: for this task, my url to post username:
+- `curl -X POST https://olbincrtnj.execute-api.us-east-1.amazonaws.com/dev/whoami  --header "Content-Type: application/json" --data-raw "{\"username\": \"hg457\"}"`
+- browser url: `https://olbincrtnj.execute-api.us-east-1.amazonaws.com/dev/whoami/hg457`
