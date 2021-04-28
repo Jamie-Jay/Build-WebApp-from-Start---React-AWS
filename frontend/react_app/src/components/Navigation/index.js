@@ -19,7 +19,6 @@ const Navigation = () => (
 // Link: even though the URL changes, the displayed content doesn't change. The navigation is only there to enable navigation through your application
 class NavigationAuth extends Component {
   render() {
-    // console.log(this.props.user)
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="#">Tri-O</a>
@@ -40,12 +39,20 @@ class NavigationAuth extends Component {
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {this.props.user.email}
+                {this.props.user.displayName ? this.props.user.displayName : this.props.user.email}
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to={ROUTES.LANDING}>Landing Page</Link>
                 <Link className="dropdown-item" to={ROUTES.HOME}>Home</Link>
-                <Link className="dropdown-item" to={ROUTES.ACCOUNT}>Account</Link>
+                <Link className="dropdown-item" to={
+                  {
+                    pathname: ROUTES.ACCOUNT,
+                    state:{
+                      username: this.props.user.displayName,
+                      useremail: this.props.user.email
+                    }
+                  }
+                }>Account</Link>
                 <Link className="dropdown-item" to={ROUTES.ADMIN}>Admin</Link>
                 <div className="dropdown-divider"></div>
                 <Link to={ROUTES.LANDING}><SignOutButton /></Link>

@@ -21,8 +21,27 @@ class Firebase {
 
   // *** Auth API ***
   // the sign up function (registration) takes email and password parameters for its function signature and uses an official Firebase API endpoint to create a user
-  doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+  doCreateUserWithEmailAndPassword = (username, email, password) =>
+  {
+    var res = this.auth.createUserWithEmailAndPassword(email, password);
+
+    // add username
+    this.auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // Updates the user attributes:
+        user.updateProfile({ // <-- Update Method here
+          displayName: username,
+          // photoURL: "https://example.com/jane-q-user/profile.jpg"
+        }).then(function() {
+          // Update successful.
+        }, function(error) {
+          // An error happened.
+        });   
+      }
+    });
+
+    return res
+  }
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);

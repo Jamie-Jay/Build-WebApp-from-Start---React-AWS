@@ -39,7 +39,7 @@ class SignUpFormBase extends Component {
     const { username, email, passwordOne } = this.state;
 
     this.props.firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .doCreateUserWithEmailAndPassword(username, email, passwordOne)
       // If the request resolves successfully, you can set the local state of the component to its initial state to empty the input fields.
       .then(authUser => {
         this.setState({ ...INITIAL_STATE });
@@ -78,7 +78,7 @@ class SignUpFormBase extends Component {
     return (
       <form onSubmit={this.onSubmit} className="w-50 m-auto">
         <div className="form-group">
-          <label for="exampleInputEmail1">Full Name</label>
+          <label htmlFor="exampleInputEmail1">Full Name</label>
           <input className="form-control"
             name="username"
             value={username}
@@ -88,7 +88,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Email address</label>
             <input className="form-control"
               name="email"
               value={email}
@@ -100,7 +100,7 @@ class SignUpFormBase extends Component {
             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label htmlFor="exampleInputPassword1">Password</label>
           <input className="form-control"
             name="passwordOne"
             value={passwordOne}
@@ -110,7 +110,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Confirm Password</label>
+          <label htmlFor="exampleInputPassword1">Confirm Password</label>
           <input className="form-control"
             name="passwordTwo"
             value={passwordTwo}
