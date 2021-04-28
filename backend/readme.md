@@ -32,3 +32,21 @@ then get response `{"userId":"some","name":"John"}`
 #### PS: for this task, my url to post username:
 - `curl -X POST https://olbincrtnj.execute-api.us-east-1.amazonaws.com/dev/whoami  --header "Content-Type: application/json" --data-raw "{\"username\": \"hg457\"}"`
 - browser url: `https://olbincrtnj.execute-api.us-east-1.amazonaws.com/dev/whoami/hg457`
+
+### Phase 2
+#### task
+##### Part 1:
+
+Web hosting! You've made quite a few changes to your project at this point, so its time to deploy this thing.
+
+1. In the AWS console - navigate to the "Amplify Console". [Read more about it here](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html) and then follow the [Getting Started](https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html) section to connect your Github repo.
+
+- Note: In step 1 - when you're connecting your Githbu repo, there will be a checkbox for "Using a monorepo?" - click Yes, and then add the path frontend/ to the text box.
+
+At the end of this step, you'll have a full deployment pipeline set up, with a dashboard where you can see the details of your build process, and you can keep track of the deployment of your app.
+
+##### Part 2:
+
+1. Time to put it under your own domain. If you don't have your own domain name yet, [buy a cheap one off Route53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-register.html) (you can always just use your name as your domain name which is never a bad idea)
+
+2. Follow the guide on [setting up a custom domain](https://docs.aws.amazon.com/amplify/latest/userguide/custom-domains.html) in your AWS Amplify Console with a free SSL certificate - there are guides on that page if you manage your domain with another provider.
