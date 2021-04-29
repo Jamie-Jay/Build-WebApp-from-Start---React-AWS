@@ -26,7 +26,10 @@ class HomeAnth extends React.Component {
   async componentDidMount() {
 
     const idToken = await this.props.user.getIdToken()
-    const response = await fetch('http://localhost:4000/dev/getposts/test', {
+    // const bankendUrl = 'http://localhost:4000/dev/getposts/test';
+    const bankendUrl = 'https://olbincrtnj.execute-api.us-east-1.amazonaws.com/dev/getposts/test';
+
+    const response = await fetch(bankendUrl, {
       headers: {
         'Authorization': idToken
       }

@@ -1,6 +1,7 @@
 const AWS = require("aws-sdk");
 const express = require("express");
 const serverless = require("serverless-http");
+var cors = require('cors')
 
 const firebaseTokenVerifier = require('firebase-token-verifier');
 const projectId = 'tri-auth'
@@ -11,6 +12,11 @@ const USERS_TABLE = process.env.USERS_TABLE;
 const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
 
 app.use(express.json());
+app.use(cors())
+
+const headers = {
+  'Access-Control-Allow-Origin': '*'
+}
 
 // add api for posts
 app.get("/getposts/:userid", async function (req, res) {
@@ -18,7 +24,7 @@ app.get("/getposts/:userid", async function (req, res) {
   // check the header named Authorization
   const token = req.get("Authorization")
   if (!token) {
-    res.status(401)
+    res.status(401).header(headers)
   }
 
   try {
@@ -27,18 +33,18 @@ app.get("/getposts/:userid", async function (req, res) {
   } catch (err) {
     // the token was invalid,
     console.error(err)
-    res.status(401)
+    res.status(401).header(headers)
   }
 
   // user is now confirmed to be authorized, return the data
   var userid =  req.params.userid;
   try {
     var content = require('./data/'+userid+'.json');
-    res.status(200).json({ content });    
+    res.status(200).header(headers).json({ content });    
   } catch (error) {
     console.log(error);
     var content = require('./data/dummydata.json');
-    res.status(500).json({ content });
+    res.status(500).header(headers).json({ content });
   }
 });
 

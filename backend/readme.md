@@ -65,3 +65,6 @@ plugins:
 ```
 - `serverless offline`
 - `serverless offline --httpPort 4000`
+
+## A5
+https://github.com/intricatecloud/cs-5356-resources/blob/master/lesson-5.md
