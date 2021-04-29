@@ -5,7 +5,6 @@ import LandingPage from '../Landing';
 class Feed extends Component {
 
   render() {
-    console.log(this.props.content)
     if(this.props.content != null) {
       const {id, name, post, time, likes, stars, views} = this.props.content
 
@@ -31,7 +30,7 @@ class Feed extends Component {
             <div className="content">
               <p>{post.S}</p>
               <br />
-              <time datetime="2021-4-3">{time.S}</time> 
+              <time>{time.S}</time> 
             </div>
           </div>
           <footer className="card-footer">
