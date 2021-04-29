@@ -48,9 +48,6 @@ class HomeAnth extends React.Component {
   }
 
   async creatNewPost() {
-    console.log(this.state.newpost)
-    alert(this.state.newpost)
-
     // compose put request
 		const token = await this.props.user.getIdToken()
 
