@@ -47,24 +47,17 @@ class HomeAnth extends React.Component {
     return (
       <div>
         <h1>Home</h1>
-        <Feed contents={this.state.contents}/>
-
-        {/* <div className="title">My Orders</div>
         <ul>
         {
-          // this.state.contents && this.state.contents.content.map(content => {
-            // return (
+          this.state.contents && this.state.contents.map(feedcontent => {
+            return (
               <li>
-                <div>Order ID: {content.id}</div>
-                <div>Order status: {content.name}</div>
-                <div>Order status: {content.post}</div>
-                <div>Order status: {content.likes}</div>
-                <div>Order status: {content.stars}</div>
+                <Feed content={feedcontent} />
               </li>
-            // )
-          // })
+            )
+          })
         }
-        </ul> */}
+        </ul>
       </div>
     )
   }

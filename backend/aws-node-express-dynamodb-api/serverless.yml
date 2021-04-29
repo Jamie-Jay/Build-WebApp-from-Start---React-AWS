@@ -3,7 +3,7 @@ service: aws-node-express-dynamodb-api
 frameworkVersion: '2'
 
 custom:
-  tableName: 'users-table-${self:provider.stage}'
+  tableName: 'Tri-Posts'
 
 provider:
   name: aws
@@ -22,9 +22,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource:
-            - Fn::GetAtt: [ UsersTable, Arn ]
-  environment:
-    USERS_TABLE: ${self:custom.tableName}
+              - 'arn:aws:dynamodb:us-east-1:746723805708:table/Tri-Posts'
 
 functions:
   api:
@@ -36,22 +34,6 @@ functions:
       - http:
           path: /{proxy+}
           method: ANY
-
-resources:
-  Resources:
-    UsersTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: username
-            AttributeType: S
-        KeySchema:
-          - AttributeName: username
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        TableName: ${self:custom.tableName}
 
 plugins:
   - serverless-offline

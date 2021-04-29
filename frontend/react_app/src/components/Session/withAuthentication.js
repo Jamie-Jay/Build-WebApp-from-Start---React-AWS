@@ -22,8 +22,7 @@ const withAuthentication = Component => {
         authUser => {
           if (authUser) {
             authUser.updateProfile({
-              // displayName: "Jane Q. User",
-              // this.props.firebase.auth().currentUser.displayName
+              // displayName: this.props.firebase.auth.currentUser.displayName
             }).then(function() {
               // Update successful.
             }).catch(function(error) {
