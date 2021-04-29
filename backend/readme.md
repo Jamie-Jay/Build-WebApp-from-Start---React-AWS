@@ -50,3 +50,18 @@ At the end of this step, you'll have a full deployment pipeline set up, with a d
 1. Time to put it under your own domain. If you don't have your own domain name yet, [buy a cheap one off Route53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-register.html) (you can always just use your name as your domain name which is never a bad idea)
 
 2. Follow the guide on [setting up a custom domain](https://docs.aws.amazon.com/amplify/latest/userguide/custom-domains.html) in your AWS Amplify Console with a free SSL certificate - there are guides on that page if you manage your domain with another provider.
+
+## A4
+https://github.com/intricatecloud/cs-5356-resources/blob/master/assignment-4.md
+
+serverless usage:
+- `npm install serverless-offline`
+- `set AWS_ACCESS_KEY_ID=< get from IAM>`  
+- `set AWS_SECRET_ACCESS_KEY=< get from IAM>`
+- add plugins to yml
+```
+plugins:
+  - serverless-offline
+```
+- `serverless offline`
+- `serverless offline --httpPort 4000`
